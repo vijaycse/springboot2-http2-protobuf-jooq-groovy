@@ -23,6 +23,7 @@ repositories {
 	mavenCentral()
 }
 
+mainClassName = 'com.book.groovy.boostore.BookstoreApplication'
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web'){
