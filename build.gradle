@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.book.groovy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web'){
+		exclude  module: 'spring-boot-starter-tomcat'
+	}
+    compile('org.springframework.boot:spring-boot-starter-jooq')
+	compile('org.springframework.boot:spring-boot-starter-undertow')
+	runtime('com.h2database:h2')
+	compile group: 'org.jooq', name: 'jooq', version: '3.11.1'
+	compile('org.codehaus.groovy:groovy')
+	compile files('libs/bookdata-1.1-SNAPSHOT.jar')
+	compile 'javax.persistence:persistence-api:1.0.2'
+	compile group: 'com.google.protobuf' , name: 'protobuf-java',version: '3.5.1'
+	compile group: 'com.google.protobuf' , name: 'protobuf-java-util',version: '3.5.1'
+	compile group: 'com.googlecode.protobuf-java-format' , name: 'protobuf-java-format',version: '1.4'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
